@@ -1,0 +1,67 @@
+:root {
+  --portal-primary: #1e40af;
+  --portal-accent: #f59e0b;
+  --portal-bg: #f8fafc;
+}
+
+body {
+  font-family: 'Inter', 'Segoe UI', sans-serif;
+  background-color: var(--portal-bg);
+  color: #0f172a;
+}
+
+.navbar-brand {
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+
+.hero {
+  padding: 4rem 0;
+}
+
+.card-shadow {
+  border: none;
+  box-shadow: 0 20px 45px rgba(15, 23, 42, 0.1);
+}
+
+.form-control:focus {
+  border-color: var(--portal-primary);
+  box-shadow: 0 0 0 0.2rem rgba(30, 64, 175, 0.2);
+}
+
+.btn-portal {
+  background-color: var(--portal-primary);
+  color: #fff;
+}
+
+.btn-portal:hover {
+  background-color: #1e3a8a;
+  color: #fff;
+}
+
+.badge-portal {
+  background-color: var(--portal-accent);
+}
+
+.loading-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(255, 255, 255, 0.85);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 1rem;
+  font-weight: 600;
+  color: var(--portal-primary);
+}
+
+.table thead {
+  background-color: #e2e8f0;
+}
+
+.footer {
+  padding: 2rem 0;
+  background: #0f172a;
+  color: #e2e8f0;
+  margin-top: 4rem;
+}
