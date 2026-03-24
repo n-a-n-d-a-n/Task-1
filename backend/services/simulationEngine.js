@@ -1,5 +1,9 @@
 const manifest = require('../trained_models/model-manifest.json');
 
+if (!manifest || !Array.isArray(manifest.models) || !Array.isArray(manifest.datasets)) {
+  throw new Error('Invalid model-manifest.json format. Expected models[] and datasets[].');
+}
+
 const MODEL_LIBRARY = manifest.models.map((model) => ({
   id: model.id,
   name: model.name,
@@ -24,6 +28,12 @@ const computeStress = ({ driftLevel, noiseLevel, imbalanceLevel, shiftLevel, vol
   );
 };
 
+const sanitizeSteps = (steps) => {
+  const parsed = Number(steps || 12);
+  if (!Number.isFinite(parsed)) return 12;
+  return Math.min(52, Math.max(4, Math.round(parsed)));
+};
+
 const runSimulation = ({
   modelId,
   datasetId,
@@ -35,6 +45,7 @@ const runSimulation = ({
   volatility = 0.08
 }) => {
   const model = MODEL_LIBRARY.find((item) => item.id === modelId) || MODEL_LIBRARY[0];
+  const normalizedTimeSteps = sanitizeSteps(timeSteps);
   const dataset = DATASET_LIBRARY.find((item) => item.id === datasetId) || DATASET_LIBRARY[0];
 
   const stressScore = computeStress({ driftLevel, noiseLevel, imbalanceLevel, shiftLevel, volatility });
@@ -42,8 +53,8 @@ const runSimulation = ({
 
   const timeline = [];
 
-  for (let step = 0; step < timeSteps; step += 1) {
-    const progression = step / Math.max(timeSteps - 1, 1);
+  for (let step = 0; step < normalizedTimeSteps; step += 1) {
+    const progression = step / Math.max(normalizedTimeSteps - 1, 1);
     const cyclicalFluctuation = Math.sin(step * Math.PI * 0.75) * volatility * 0.03;
     const degradation = stressScore * progression * (0.22 + dataset.baselineDifficulty * 0.08) * resilienceFactor;
 
@@ -87,7 +98,7 @@ const runSimulation = ({
   return {
     model,
     dataset,
-    config: { timeSteps, driftLevel, noiseLevel, imbalanceLevel, shiftLevel, volatility },
+    config: { timeSteps: normalizedTimeSteps, driftLevel, noiseLevel, imbalanceLevel, shiftLevel, volatility },
     timeline,
     summary
   };

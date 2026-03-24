@@ -137,3 +137,11 @@ Open `http://localhost:8080`.
 - Add experiment comparison page and downloadable PDF report.
 - Add role-based auth (admin/reviewer/student).
 - Add CI tests for API contracts and simulation consistency.
+
+
+## Conflict-resolution notes
+
+If this branch is merged with an older version, keep these canonical files:
+- `backend/services/simulationEngine.js` as the source of simulation logic.
+- `backend/trained_models/model-manifest.json` as the single source of model catalog truth.
+- `frontend/js/simulator.js` as the single source of simulator UI behavior.

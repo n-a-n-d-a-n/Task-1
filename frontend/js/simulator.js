@@ -56,6 +56,10 @@ const populateCatalog = async () => {
   const modelSelect = document.querySelector('#model');
   const datasetSelect = document.querySelector('#dataset');
 
+  if (!Array.isArray(catalog.models) || !catalog.models.length || !Array.isArray(catalog.datasets) || !catalog.datasets.length) {
+    throw new Error('Simulation catalog is empty. Add models in backend/trained_models/model-manifest.json');
+  }
+
   modelSelect.innerHTML = catalog.models
     .map((model) => `<option value="${model.id}">${model.name} (${model.family})</option>`)
     .join('');
@@ -102,9 +106,16 @@ const handleSimulate = async (event) => {
 const initSimulator = async () => {
   try {
     await populateCatalog();
-    document.querySelector('#sim-form').addEventListener('submit', handleSimulate);
-    document.querySelector('#sim-form').dispatchEvent(new Event('submit'));
+    const form = document.querySelector('#sim-form');
+    form.addEventListener('submit', handleSimulate);
+    form.dispatchEvent(new Event('submit'));
   } catch (error) {
+    const form = document.querySelector('#sim-form');
+    if (form) {
+      form.querySelectorAll('button, input, select').forEach((el) => {
+        el.disabled = true;
+      });
+    }
     showAlert(document.querySelector('#sim-alert'), error.message);
   }
 };
