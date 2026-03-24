@@ -1,0 +1,83 @@
+{
+  "models": [
+    {
+      "id": "xgboost",
+      "name": "XGBoost Classifier",
+      "family": "Gradient Boosting",
+      "artifactFile": "artifacts/xgboost-credit-card-fraud.json",
+      "trainedOn": "credit-card-fraud",
+      "trainingDate": "2026-03-24",
+      "basePerformance": { "accuracy": 0.934, "f1": 0.912, "precision": 0.904, "recall": 0.923, "auc": 0.956, "latencyMs": 42 }
+    },
+    {
+      "id": "lightgbm",
+      "name": "LightGBM",
+      "family": "Gradient Boosting",
+      "artifactFile": "artifacts/lightgbm-telecom-churn.json",
+      "trainedOn": "telecom-churn",
+      "trainingDate": "2026-03-24",
+      "basePerformance": { "accuracy": 0.922, "f1": 0.901, "precision": 0.892, "recall": 0.914, "auc": 0.943, "latencyMs": 30 }
+    },
+    {
+      "id": "random-forest",
+      "name": "Random Forest",
+      "family": "Ensemble",
+      "artifactFile": "artifacts/random-forest-adult-income.json",
+      "trainedOn": "adult-income",
+      "trainingDate": "2026-03-24",
+      "basePerformance": { "accuracy": 0.891, "f1": 0.873, "precision": 0.864, "recall": 0.882, "auc": 0.914, "latencyMs": 28 }
+    },
+    {
+      "id": "logistic-regression",
+      "name": "Logistic Regression",
+      "family": "Linear",
+      "artifactFile": "artifacts/logistic-regression-adult-income.json",
+      "trainedOn": "adult-income",
+      "trainingDate": "2026-03-24",
+      "basePerformance": { "accuracy": 0.846, "f1": 0.824, "precision": 0.835, "recall": 0.812, "auc": 0.867, "latencyMs": 8 }
+    },
+    {
+      "id": "mlp",
+      "name": "MLP Neural Network",
+      "family": "Deep Learning",
+      "artifactFile": "artifacts/mlp-covtype.json",
+      "trainedOn": "covtype",
+      "trainingDate": "2026-03-24",
+      "basePerformance": { "accuracy": 0.913, "f1": 0.901, "precision": 0.885, "recall": 0.924, "auc": 0.934, "latencyMs": 57 }
+    }
+  ],
+  "datasets": [
+    {
+      "id": "credit-card-fraud",
+      "name": "Credit Card Fraud Detection",
+      "domain": "Finance",
+      "taskType": "Binary Classification",
+      "size": "284,807 rows",
+      "baselineDifficulty": 0.72
+    },
+    {
+      "id": "telecom-churn",
+      "name": "Telecom Customer Churn",
+      "domain": "Telecom",
+      "taskType": "Binary Classification",
+      "size": "7,043 rows",
+      "baselineDifficulty": 0.5
+    },
+    {
+      "id": "covtype",
+      "name": "Forest Cover Type",
+      "domain": "Geospatial",
+      "taskType": "Multi-class Classification",
+      "size": "581,012 rows",
+      "baselineDifficulty": 0.65
+    },
+    {
+      "id": "adult-income",
+      "name": "Adult Income",
+      "domain": "Socioeconomic",
+      "taskType": "Binary Classification",
+      "size": "48,842 rows",
+      "baselineDifficulty": 0.55
+    }
+  ]
+}

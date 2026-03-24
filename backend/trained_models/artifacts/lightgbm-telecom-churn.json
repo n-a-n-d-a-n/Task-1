@@ -1,0 +1,7 @@
+{
+  "modelId": "lightgbm",
+  "datasetId": "telecom-churn",
+  "featureCount": 49,
+  "bestParams": { "num_leaves": 64, "learning_rate": 0.05, "n_estimators": 300 },
+  "baselineMetrics": { "accuracy": 0.922, "f1": 0.901, "precision": 0.892, "recall": 0.914, "auc": 0.943 }
+}

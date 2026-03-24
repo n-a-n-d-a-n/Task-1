@@ -1,14 +1,3 @@
-const showLoading = (button, isLoading) => {
-  if (isLoading) {
-    button.dataset.originalText = button.textContent;
-    button.textContent = 'Please wait...';
-    button.disabled = true;
-  } else {
-    button.textContent = button.dataset.originalText || button.textContent;
-    button.disabled = false;
-  }
-};
-
 const handleRegister = async (event) => {
   event.preventDefault();
 

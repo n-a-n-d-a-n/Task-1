@@ -1,0 +1,7 @@
+{
+  "modelId": "logistic-regression",
+  "datasetId": "adult-income",
+  "featureCount": 104,
+  "bestParams": { "C": 0.75, "penalty": "l2", "solver": "lbfgs" },
+  "baselineMetrics": { "accuracy": 0.846, "f1": 0.824, "precision": 0.835, "recall": 0.812, "auc": 0.867 }
+}

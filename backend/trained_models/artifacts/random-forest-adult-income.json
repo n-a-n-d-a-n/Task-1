@@ -1,0 +1,7 @@
+{
+  "modelId": "random-forest",
+  "datasetId": "adult-income",
+  "featureCount": 104,
+  "bestParams": { "n_estimators": 500, "max_depth": 22, "class_weight": "balanced" },
+  "baselineMetrics": { "accuracy": 0.891, "f1": 0.873, "precision": 0.864, "recall": 0.882, "auc": 0.914 }
+}

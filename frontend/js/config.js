@@ -45,3 +45,16 @@ const showAlert = (container, message, type = 'danger') => {
     </div>
   `;
 };
+
+
+const showLoading = (button, isLoading, loadingText = 'Please wait...') => {
+  if (!button) return;
+  if (isLoading) {
+    button.dataset.originalText = button.textContent;
+    button.textContent = loadingText;
+    button.disabled = true;
+  } else {
+    button.textContent = button.dataset.originalText || button.textContent;
+    button.disabled = false;
+  }
+};
