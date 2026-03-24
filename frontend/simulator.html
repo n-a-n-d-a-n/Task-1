@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AI Model Performance Simulator</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm">
+      <div class="container">
+        <a class="navbar-brand" href="index.html">AI Model Performance Simulator</a>
+        <div class="ms-auto d-flex gap-2">
+          <a class="btn btn-outline-primary" href="methodology.html">Methodology</a>
+          <a class="btn btn-portal" href="simulator.html">Run Simulation</a>
+        </div>
+      </div>
+    </nav>
+
+    <main class="py-5">
+      <div class="container">
+        <h1 class="fw-bold mb-2">Model Robustness Stress Lab</h1>
+        <p class="text-muted mb-4">Configure drift, noise, imbalance, and shift to visualize degradation over time.</p>
+
+        <div class="row g-4">
+          <div class="col-lg-4">
+            <div class="card card-shadow p-4 h-100">
+              <h5 class="fw-bold">Simulation Controls</h5>
+              <form id="sim-form" class="mt-3">
+                <div class="mb-3">
+                  <label class="form-label" for="model">Model</label>
+                  <select id="model" class="form-select" required></select>
+                </div>
+                <div class="mb-3">
+                  <label class="form-label" for="dataset">Dataset</label>
+                  <select id="dataset" class="form-select" required></select>
+                </div>
+                <div class="mb-3">
+                  <label class="form-label">Time Steps</label>
+                  <input id="timeSteps" type="number" class="form-control" value="12" min="4" max="52" />
+                </div>
+
+                <div class="mb-2"><label class="form-label" for="drift">Data Drift</label><input id="drift" type="range" class="form-range" min="0" max="1" step="0.01" value="0.2" /></div>
+                <div class="mb-2"><label class="form-label" for="noise">Noise</label><input id="noise" type="range" class="form-range" min="0" max="1" step="0.01" value="0.1" /></div>
+                <div class="mb-2"><label class="form-label" for="imbalance">Class Imbalance</label><input id="imbalance" type="range" class="form-range" min="0" max="1" step="0.01" value="0.1" /></div>
+                <div class="mb-2"><label class="form-label" for="shift">Distribution Shift</label><input id="shift" type="range" class="form-range" min="0" max="1" step="0.01" value="0.1" /></div>
+                <div class="mb-3"><label class="form-label" for="volatility">Volatility</label><input id="volatility" type="range" class="form-range" min="0" max="1" step="0.01" value="0.08" /></div>
+
+                <button id="simulate-btn" class="btn btn-portal w-100" type="submit">Run Simulation</button>
+              </form>
+            </div>
+          </div>
+
+          <div class="col-lg-8">
+            <div id="sim-alert"></div>
+            <div class="card card-shadow p-4 mb-4">
+              <h5 class="fw-bold mb-3">Performance Timeline</h5>
+              <canvas id="simChart" height="130"></canvas>
+            </div>
+            <div class="card card-shadow p-4">
+              <h5 class="fw-bold mb-3">Simulation Summary</h5>
+              <div id="summary-grid" class="row g-3"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js"></script>
+    <script src="js/config.js"></script>
+    <script src="js/simulator.js"></script>
+  </body>
+</html>

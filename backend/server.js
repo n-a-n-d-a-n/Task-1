@@ -6,6 +6,7 @@ const dotenv = require('dotenv');
 const connectDB = require('./config/db');
 const authRoutes = require('./routes/auth');
 const userRoutes = require('./routes/users');
+const simulationRoutes = require('./routes/simulations');
 const { notFoundHandler, errorHandler } = require('./middleware/errorMiddleware');
 
 // Load environment variables
@@ -29,6 +30,7 @@ app.get('/api/health', (req, res) => {
 // Routes
 app.use('/api/auth', authRoutes);
 app.use('/api/users', userRoutes);
+app.use('/api/simulations', simulationRoutes);
 
 // Error handling
 app.use(notFoundHandler);
