@@ -123,6 +123,12 @@ npm install
 npm run dev
 ```
 
+Run backend tests:
+```bash
+cd backend
+npm test
+```
+
 ### Frontend
 ```bash
 cd frontend
