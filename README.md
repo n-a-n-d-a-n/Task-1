@@ -128,3 +128,11 @@ Open `http://localhost:8080`.
 - Add experiment comparison page and downloadable PDF report.
 - Add role-based auth (admin/reviewer/student).
 - Add CI tests for API contracts and simulation consistency.
+
+---
+
+## 👨‍💻 Author
+
+**Nandan (n-a-n-d-a-n)**  
+AI & Data Science Student  
+🚀 Open Source Enthusiast
